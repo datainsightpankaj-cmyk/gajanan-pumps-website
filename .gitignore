@@ -30,3 +30,7 @@ yarn-error.log*
 
 # netlify
 .netlify
+
+# Environment files
+.env*
+!.env.example

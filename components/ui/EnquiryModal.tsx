@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { CheckCircle2, Loader2, Send, X } from "lucide-react";
 import { products } from "@/lib/products";
 import { enquirySchema, type EnquiryInput } from "@/lib/validation";
+import { lockBodyScroll } from "@/lib/scroll-lock";
 import { cn } from "@/lib/utils";
 
 type EnquiryModalProps = {
@@ -66,8 +67,7 @@ export function EnquiryModal({
     });
     setValue("product", product ?? "");
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const releaseScrollLock = lockBodyScroll();
 
     const timer = window.setTimeout(() => firstFieldRef.current?.focus(), 80);
 
@@ -101,7 +101,7 @@ export function EnquiryModal({
 
     return () => {
       window.clearTimeout(timer);
-      document.body.style.overflow = previousOverflow;
+      releaseScrollLock();
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open, product, reset, setValue, onClose]);

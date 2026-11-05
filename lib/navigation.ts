@@ -12,7 +12,7 @@ export type NavItem = NavLink & {
 
 export const productLinks: NavLink[] = products.map((product) => ({
   label: product.subtitle ? `${product.code} · ${product.subtitle}` : product.name,
-  href: `/#product-${product.slug}`,
+  href: `/products/${product.slug}`,
 }));
 
 export const industryLinks: NavLink[] = industries.map((industry) => ({

@@ -55,7 +55,7 @@ export function SearchDialog({
         ? `${product.code} — ${product.subtitle}`
         : product.name,
       meta: "Product",
-      href: `/#product-${product.slug}`,
+      href: `/products/${product.slug}`,
       kind: "product",
       image: product.image,
     }));
